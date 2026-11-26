@@ -44,16 +44,3 @@ void Patient::setPriority(PatientPriority newPriority)
 {
     priority = newPriority;
 }
-
-bool Patient::precedes(const Patient &other) const
-{
-    // enum class não compara com < diretamente, então é necessário converter para int
-    int myPriority = static_cast<int>(priority);
-    int otherPriority = static_cast<int>(other.priority);
-
-    if (myPriority != otherPriority)
-        return myPriority < otherPriority;   // número menor = mais grave
-    if (arrival != other.arrival)
-        return arrival < other.arrival;      // mesma prioridade: quem chegou antes
-    return id < other.id;                    // empate total: menor id
-}
