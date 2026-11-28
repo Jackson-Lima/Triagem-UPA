@@ -30,8 +30,9 @@ class Patient
         // Usado na reclassificação. Não altera a chegada, que serve de desempate.
         void setPriority(PatientPriority newPriority);
 
-        // true se este paciente deve ser atendido antes de "other"
+        // Regra de precedência: prioridade, chegada, id
         bool precedes(const Patient &other) const;
+
 };
 
 #endif

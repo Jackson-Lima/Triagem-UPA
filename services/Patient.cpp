@@ -44,3 +44,17 @@ void Patient::setPriority(PatientPriority newPriority)
 {
     priority = newPriority;
 }
+
+// Retorna true se este paciente deve ser atendido antes de "other"
+bool Patient::precedes(const Patient &other) const
+{
+    if (priority != other.priority){              // Verifica prioridade
+        return priority < other.priority;
+    }
+    else if (arrival != other.arrival){           // Mesma prioridade: quem chegou antes
+        return arrival < other.arrival;
+    }
+    else{                                         // Empate total: menor id
+        return id < other.id;
+    }
+}
